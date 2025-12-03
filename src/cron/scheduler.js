@@ -1,6 +1,6 @@
 import cron from "node-cron";
 import Post from "../models/Post.js";
-import linkedinAPI from "../utils/linkedinAPI.js";
+import {postOnLinkedIn} from "../middleware/linkedinAPI.js";
 
 cron.schedule("* * * * *", async () => {
   const now = new Date();
@@ -11,7 +11,7 @@ cron.schedule("* * * * *", async () => {
   });
 
   for (let post of duePosts) {
-    await linkedinAPI.publish(post);
+    await postOnLinkedIn(post.accessToken, post.userId, post.text);
     post.status = "published";
     await post.save();
   }

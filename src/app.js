@@ -1,8 +1,8 @@
 import express from "express";
 import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
-import linkedinRoutes from "./routes/linkedinRoutes.js";
-import postRoutes from "./routes/postRoutes.js";
+import linkedinRoutes from "./routes/linkedInRoutes.js";
+import postRoutes from "./routes/postroutes.js";
 
 const app = express();
 
